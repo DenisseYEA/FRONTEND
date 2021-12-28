@@ -1,0 +1,87 @@
+<br>
+<h2 class="text-center">RESPALDOS GOOGLE DRIVE</h2>
+<hr>
+<div class="card text-white bg-dark mb-3">
+    <div class="card-body">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text bg-dark text-white">BASES DE DATOS:</span>
+            </div>
+            <select [(ngModel)]="basededatos"
+             class="form-control"
+             id="exampleFormControlSelect1">
+                <option *ngFor="let bd of basesdedatos.data;" value="{{bd.UBICACIONGOOGLE}}">{{bd.BASEDEDATOS}}</option>
+            </select>
+        </div>
+    </div>
+</div>
+<div class="text-center">
+    <button type="button" (click)="seleccionarBD()" class="btn btn-danger">SELECCIONAR</button>
+</div>
+<br>
+<div *ngIf="filesFolder == true" class="">
+    <div class="card text-white bg-dark mb-3">
+        <div class="card-body">
+            <div class="input-group">
+                <input class="form-control" [(ngModel)]="search" type="search" placeholder="Buscar nombre de archivo" aria-label="Search">
+                <button class="btn btn btn-secondary" (click)="buscar()" type="submit"><svg width="1em" height="1em"
+                        viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z" />
+                        <path fill-rule="evenodd"
+                            d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z" />
+                    </svg></button>
+                <button type="button" (click)="inicioRegresar()" class="btn btn-danger">
+                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-left" fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M5.854 4.646a.5.5 0 0 1 0 .708L3.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0z" />
+                        <path fill-rule="evenodd" d="M2.5 8a.5.5 0 0 1 .5-.5h10.5a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    <table class="table text-white">
+        <thead>
+            <tr class="bg-dark">
+                <th scope="col">NOMBRE DE ARCHIVO</th>
+                <th scope="col">TIPO DE ARCHIVO</th>
+                <th scope="col">FECHA</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let file of files.data; let i=index" class="bg-dark">
+                <td>{{file.name}}</td>
+                <td>{{file.mimeType}}</td>
+                <td>{{file.createdTime}}</td>
+                <td class="text-center">
+                    <button type="button" (click)="descargar(i)" class="btn btn-danger">DESCARGAR
+                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-download" fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M.5 8a.5.5 0 0 1 .5.5V12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8.5a.5.5 0 0 1 1 0V12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V8.5A.5.5 0 0 1 .5 8z" />
+                            <path fill-rule="evenodd"
+                                d="M5 7.5a.5.5 0 0 1 .707 0L8 9.793 10.293 7.5a.5.5 0 1 1 .707.707l-2.646 2.647a.5.5 0 0 1-.708 0L5 8.207A.5.5 0 0 1 5 7.5z" />
+                            <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0v-8A.5.5 0 0 1 8 1z" />
+                        </svg>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div *ngIf="cargando" class="alert alert-secondary text-center mt-3">
+        <h4 class="alert-heading">Cargando</h4>
+        <span class="spinner-border spinner-border-sm m-2" role="status" aria-hidden="true" style="zoom: 250%;"></span>
+        <p class="mb-0">Espere por favor</p>
+    </div>
+    <div *ngIf="nofound" class="alert alert-danger text-center mt-3">
+        <h4 class="alert-heading">No hay archivos</h4>
+        <svg width="1em" height="1em" viewBox="0 0 16 16" style="zoom: 300%;" class="bi bi-exclamation m-2"
+            fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z" />
+        </svg>
+    </div>
+</div>

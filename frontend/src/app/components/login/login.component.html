@@ -1,0 +1,56 @@
+<div class="mx-auto" style="width: 400px; margin-top: 50px;">
+    <div class="card text-white bg-dark">
+        <div class="card-body">
+            <div class="text-center">
+                <h3>RESPALDO AUTOMÁTICO</h3>
+                <h4>CORPORATIVO GRUPO ÁLICA</h4>
+            </div>
+            <div class="text-center">
+                <img src="../../../assets/img/Grupo letras negras.png" class="rounded" alt="...">
+              </div> 
+              <br>
+              <div class="text-center">
+                <h5>INICIAR SESIÓN</h5>
+            </div>
+            <form (ngSubmit)="login(f,f.value)"
+                    #f="ngForm"
+                    class="validate-form">
+                <div class="form-group">
+                    <span *ngIf="f.submitted && f.controls['usuario'].errors"
+                    class="text-danger">El usuario es obligatorio</span>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="bg-dark text-white"></span>
+                        </div>
+                        <input  class="form-control" 
+                                type="text"
+                                name="usuario"
+                                [(ngModel)]="usuario"  
+                                required
+                                usuario
+                                placeholder="USUARIO">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <span *ngIf="f.submitted && f.controls['password'].errors" 
+                    class="text-danger animated fadeIn">La contraseña es necesaria</span>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="bg-dark text-white"></span>
+                        </div>
+                        <input class="form-control" 
+                                type="password"
+                                name="password" 
+                                [(ngModel)]="password"
+                                required
+                                passwordd
+                                placeholder="CONTRASEÑA">
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-danger">INGRESAR</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

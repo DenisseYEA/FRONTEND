@@ -1,0 +1,210 @@
+<br>
+<h2 class="text-center">RELACIÓN RESPALDOS</h2>
+<hr>
+<div class="card text-white bg-dark mb-3">
+    <div class="card-body">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text bg-dark text-white">SEMANA:</span>
+            </div>
+            <input [(ngModel)]="semana" type="number" class="form-control" min="1" max="52" placeholder="1-52">
+            <div class="input-group-prepend">
+                <span class="input-group-text bg-dark text-white">MES:</span>
+            </div>
+            <select [(ngModel)]="mes" class="form-control" id="exampleFormControlSelect1">
+                <option value="01">ENERO</option>
+                <option value="02">FEBRERO</option>
+                <option value="03">MARZO</option>
+                <option value="04">ABRIL</option>
+                <option value="05">MAYO</option>
+                <option value="06">JUNIO</option>
+                <option value="07">JULIO</option>
+                <option value="08">AGOSTO</option>
+                <option value="09">SEPTIEMBRE</option>
+                <option value="10">OCTUBRE</option>
+                <option value="11">NOVIEMBRE</option>
+                <option value="12">DICIEMBRE</option>
+            </select>
+            <div class="input-group-prepend">
+                <span class="input-group-text bg-dark text-white">AÑO:</span>
+            </div>
+            <input [(ngModel)]="fecha" type="number" min="2020" class="form-control" placeholder="Ej. 2020">
+        </div>
+    </div>
+</div>
+<div class="text-center">
+    <button type="button" (click)="seleccionarRegistro()" class="btn btn-danger">SELECCIONAR</button>
+</div>
+<br>
+<table class="table text-white">
+    <thead>
+        <tr class="bg-dark">
+            <th scope="col">BASES DE DATOS</th>
+            <th scope="col">LUNES</th>
+            <th scope="col">MARTES</th>
+            <th scope="col">MIERCOLES</th>
+            <th scope="col">JUEVES</th>
+            <th scope="col">VIERNES</th>
+            <th scope="col">SABADO</th>
+            <th scope="col">DOMINGO</th>
+            <th scope="col">FECHA</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let registro of registros.data; let i=index" class="bg-dark">
+            <td>{{registro.BASEDEDATOS}}</td>
+            <td *ngIf="registro.LUNES == 0" >
+                <svg width="1em" height="1em" viewBox="0 0 16 16" style="color:red;" class="bi bi-x-circle mr-2"
+                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                    <path fill-rule="evenodd"
+                        d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z" />
+                    <path fill-rule="evenodd"
+                        d="M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z" />
+                </svg>
+            </td>
+            <td *ngIf="registro.LUNES == 1">
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-check-circle mr-2"
+                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                    <path fill-rule="evenodd"
+                        d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.236.236 0 0 1 .02-.022z" />
+                </svg>
+            </td>
+            <td *ngIf="registro.MARTES == 0">
+                <svg width="1em" height="1em" viewBox="0 0 16 16" style="color:red;" class="bi bi-x-circle mr-2"
+                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                    <path fill-rule="evenodd"
+                        d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z" />
+                    <path fill-rule="evenodd"
+                        d="M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z" />
+                </svg>
+            </td>
+            <td *ngIf="registro.MARTES == 1">
+                <svg width="1em" height="1em" viewBox="0 0 16 16"
+                    class="bi bi-check-circle mr-2" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                    <path fill-rule="evenodd"
+                        d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.236.236 0 0 1 .02-.022z" />
+                </svg>
+            </td>
+            <td *ngIf="registro.MIERCOLES == 0">
+                <svg width="1em" height="1em" viewBox="0 0 16 16" style="color:red;" class="bi bi-x-circle mr-2"
+                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                    <path fill-rule="evenodd"
+                        d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z" />
+                    <path fill-rule="evenodd"
+                        d="M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z" />
+                </svg>
+            </td>
+            <td *ngIf="registro.MIERCOLES == 1">
+                <svg width="1em" height="1em" viewBox="0 0 16 16"
+                    class="bi bi-check-circle mr-2" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                    <path fill-rule="evenodd"
+                        d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.236.236 0 0 1 .02-.022z" />
+                </svg>
+            </td>
+            <td *ngIf="registro.JUEVES == 0">
+                <svg width="1em" height="1em" viewBox="0 0 16 16" style="color:red;" class="bi bi-x-circle mr-2"
+                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                    <path fill-rule="evenodd"
+                        d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z" />
+                    <path fill-rule="evenodd"
+                        d="M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z" />
+                </svg>
+            </td>
+            <td *ngIf="registro.JUEVES == 1">
+                <svg width="1em" height="1em" viewBox="0 0 16 16"
+                    class="bi bi-check-circle mr-2" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                    <path fill-rule="evenodd"
+                        d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.236.236 0 0 1 .02-.022z" />
+                </svg>
+            </td>
+            <td *ngIf="registro.VIERNES == 0">
+                <svg width="1em" height="1em" viewBox="0 0 16 16" style="color:red;" class="bi bi-x-circle mr-2"
+                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                    <path fill-rule="evenodd"
+                        d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z" />
+                    <path fill-rule="evenodd"
+                        d="M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z" />
+                </svg>
+            </td>
+            <td *ngIf="registro.VIERNES == 1">
+                <svg width="1em" height="1em" viewBox="0 0 16 16"
+                    class="bi bi-check-circle mr-2" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                    <path fill-rule="evenodd"
+                        d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.236.236 0 0 1 .02-.022z" />
+                </svg>
+            </td>
+            <td *ngIf="registro.SABADO == 0">
+                <svg width="1em" height="1em" viewBox="0 0 16 16" style="color:red;" class="bi bi-x-circle mr-2"
+                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                    <path fill-rule="evenodd"
+                        d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z" />
+                    <path fill-rule="evenodd"
+                        d="M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z" />
+                </svg>
+            </td>
+            <td *ngIf="registro.SABADO == 1">
+                <svg width="1em" height="1em" viewBox="0 0 16 16"
+                    class="bi bi-check-circle mr-2" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                    <path fill-rule="evenodd"
+                        d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.236.236 0 0 1 .02-.022z" />
+                </svg>
+            </td>
+            <td *ngIf="registro.DOMINGO == 0">
+                <svg width="1em" height="1em" viewBox="0 0 16 16" style="color:red;" class="bi bi-x-circle mr-2"
+                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                    <path fill-rule="evenodd"
+                        d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z" />
+                    <path fill-rule="evenodd"
+                        d="M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z" />
+                </svg>
+            </td>
+            <td *ngIf="registro.DOMINGO == 1">
+                <svg width="1em" height="1em" viewBox="0 0 16 16"
+                    class="bi bi-check-circle mr-2" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                    <path fill-rule="evenodd"
+                        d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.236.236 0 0 1 .02-.022z" />
+                </svg>
+            </td>
+            <td>{{registro.FECHA}}</td>
+        </tr>
+    </tbody>
+</table>
+<div *ngIf="cargando" class="alert alert-secondary text-center mt-3">
+    <h4 class="alert-heading">Cargando</h4>
+    <span class="spinner-border spinner-border-sm m-2" role="status" aria-hidden="true" style="zoom: 250%;"></span>
+    <p class="mb-0">Espere por favor</p>
+</div>
+<div *ngIf="nofound" class="alert alert-danger text-center mt-3">
+    <h4 class="alert-heading">No hay registro</h4>
+    <svg width="1em" height="1em" viewBox="0 0 16 16" style="zoom: 300%;" class="bi bi-exclamation m-2" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+      </svg>
+</div>

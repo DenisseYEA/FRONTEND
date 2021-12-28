@@ -1,0 +1,231 @@
+<br>
+<h2 class="text-center">CONFIGURACIÓN</h2>
+<hr>
+<div class="text-center">
+    <button *ngIf="nueva" type="button" (click)="nuevaCuentaGD()" class="btn btn-secondary">Agregar Cuenta Google
+        Drive</button>
+    <button *ngIf="guardarGD" type="button" (click)="guardarCuentaGD()" class="btn btn-danger">Guardar Cuenta Google
+        Drive</button>
+    <button *ngIf="guardarGDBD" type="button" (click)="guardarCuentaGDBD()" class="btn btn-danger">Guardar Cuenta Google
+        Drive</button>
+    <button *ngIf="guardarGM" type="button" (click)="guardarCuentaGM()" class="btn btn-danger">Guardar Cuenta Gmail
+    </button>
+    <button *ngIf="nuevo" type="button" (click)="nuevoConfig()" class="btn btn-danger">Nueva base de datos</button>
+    <button *ngIf="guardar" type="button" (click)="guardarConfig()" class="btn btn-danger">Guardar base de
+        datos</button>
+    <button *ngIf="update" type="button" (click)="actualizarConfig()" class="btn btn-danger">Actualizar base de
+        datos</button>
+    <button *ngIf="inicio" type="button" (click)="inicioConfig()" class="btn btn-secondary">
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-left" fill="currentColor"
+            xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
+                d="M5.854 4.646a.5.5 0 0 1 0 .708L3.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0z" />
+            <path fill-rule="evenodd" d="M2.5 8a.5.5 0 0 1 .5-.5h10.5a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+        </svg>Regresar
+    </button>
+    <button *ngIf="regresar" type="button" (click)="regresarInicio()" class="btn btn-secondary">
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-left" fill="currentColor"
+            xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
+                d="M5.854 4.646a.5.5 0 0 1 0 .708L3.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0z" />
+            <path fill-rule="evenodd" d="M2.5 8a.5.5 0 0 1 .5-.5h10.5a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+        </svg>Regresar
+    </button>
+</div>
+<div *ngIf="formgoogledrive" class="card text-white bg-dark mb-3">
+    <div class="card-body">
+        <div class="text-center">
+            <h5 class="text-center">CUENTA GOOGLE DRIVE</h5>
+        </div>
+        <div class="text-center">
+        </div>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text bg-dark text-white">CÓDIGO:</span>
+            </div>
+            <input type="text" [(ngModel)]="codegd" class="form-control">
+            <div class="input-group-prepend">
+                <a *ngIf="formgoogledrive"
+                    href="https://accounts.google.com/o/oauth2/v2/auth?access_type=offline&scope=https://www.googleapis.com/auth/drive&response_type=code&client_id=820775114203-hnin2d25t79rlpoltdkmi8j6kjamemci.apps.googleusercontent.com&redirect_uri=urn:ietf:wg:oauth:2.0:oob"
+                    target="_blank" class="btn btn-secondary stretched-link">Obtener Código</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="formgmail" class="card text-white bg-dark mb-3">
+    <div class="card-body">
+        <div class="text-center">
+            <h5 class="text-center">CUENTA GMAIL</h5>
+        </div>
+        <div class="text-center">
+        </div>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text bg-dark text-white">CÓDIGO:</span>
+            </div>
+            <input type="text" [(ngModel)]="codegm" class="form-control">
+            <div class="input-group-prepend">
+                <a *ngIf="formgmail"
+                    href="https://accounts.google.com/o/oauth2/v2/auth?access_type=offline&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fgmail.send&response_type=code&client_id=321747353628-8bvjrbj6rl6kk7go1tcji67b74lalij6.apps.googleusercontent.com&redirect_uri=urn%3Aietf%3Awg%3Aoauth%3A2.0%3Aoob"
+                    target="_blank" class="btn btn-secondary stretched-link">Obtener Código</a>
+            </div>
+        </div>
+        <br>
+        <div class="text-center">
+            <h5 class="text-center">NOTIFICACIÓN POR CORREO ELECTRÓNICO</h5>
+        </div>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text bg-dark text-white">CORREO 1:</span>
+            </div>
+            <input type="text" [(ngModel)]="correouno" class="form-control">
+            <div class="input-group-prepend">
+                <span class="input-group-text bg-dark text-white">CORREO 2:</span>
+            </div>
+            <input type="text" [(ngModel)]="correodos" class="form-control">
+        </div>
+    </div>
+</div>
+<div *ngIf="formconfig" class="card text-white bg-dark mb-3">
+    <div class="card-body">
+        <div class="text-center">
+            <h5 class="text-center">BASE DE DATOS</h5>
+        </div>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text bg-dark text-white">NOMBRE:</span>
+            </div>
+            <input type="text" [(ngModel)]="bd" class="form-control">
+        </div>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text bg-dark text-white">URL API:</span>
+            </div>
+            <input type="text" [(ngModel)]="urlapi" class="form-control">
+        </div>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text bg-dark text-white">URL ARCHIVO .BAT:</span>
+            </div>
+            <input type="text" [(ngModel)]="ubigeabat" class="form-control">
+        </div>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text bg-dark text-white">URL CARPETA RESPALDO:</span>
+            </div>
+            <input type="text" [(ngModel)]="ubigear" class="form-control">
+        </div>
+        <br>
+        <div class="text-center">
+            <h5 class="text-center">GOOGLE DRIVE</h5>
+        </div>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text bg-dark text-white">NOMBRE CARPETA DE RESPALDO:</span>
+            </div>
+            <input type="text" [(ngModel)]="ubigoogle" class="form-control">
+        </div>
+        <br>
+        <div class="text-center">
+            <h5 class="text-center">RESPALDO AUTOMATICO</h5>
+        </div>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text bg-dark text-white">MINUTOS:</span>
+            </div>
+            <input type="text" [(ngModel)]="min" min="0" max="59" placeholder="0-59" class="form-control">
+            <div class="input-group-prepend">
+                <span class="input-group-text bg-dark text-white">HORA:</span>
+            </div>
+            <input type="number" [(ngModel)]="hora" min="0" max="23" placeholder="0-23" class="form-control">
+            <div class="input-group-prepend">
+                <span class="input-group-text bg-dark text-white">FRECUENCIA:</span>
+            </div>
+            <select [(ngModel)]="dia" class="form-control" id="diaFormControlSelect1">
+                <option value="*">DIARIO</option>
+                <option value="1">LUNES</option>
+                <option value="2">MARTES</option>
+                <option value="3">MIERCOLES</option>
+                <option value="4">JUEVES</option>
+                <option value="5">VIERNES</option>
+                <option value="6">SABADO</option>
+                <option value="0">DOMINGO</option>
+            </select>
+        </div>
+    </div>
+</div>
+<br>
+<div class="card text-white bg-dark mb-3">
+    <div class="card-body">
+        <div class="input-group">
+            <input class="form-control" [(ngModel)]="search" type="search" placeholder="Buscar" aria-label="Search">
+            <button class="btn btn btn-secondary" (click)="buscar()" type="submit"><svg width="1em" height="1em"
+                    viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z" />
+                    <path fill-rule="evenodd"
+                        d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z" />
+                </svg></button>
+            <button type="button" (click)="inicioConfigRegresar()" class="btn btn-danger">
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-left" fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M5.854 4.646a.5.5 0 0 1 0 .708L3.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0z" />
+                    <path fill-rule="evenodd" d="M2.5 8a.5.5 0 0 1 .5-.5h10.5a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+                </svg>
+            </button>
+        </div>
+    </div>
+</div>
+<table class="table text-white">
+    <thead>
+        <tr class="bg-dark">
+            <th scope="col">BASES DE DATOS</th>
+            <th scope="col">URL API</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let config of configs.data; let i=index" class="bg-dark">
+            <td>{{config.BASEDEDATOS}}</td>
+            <td>{{config.URLAPI}}</td>
+            <td class="text-center">
+                <button type="button" (click)="editarConfig(i)" class="btn btn-secondary mr-1">Editar
+                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                        <path fill-rule="evenodd"
+                            d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                    </svg>
+                </button>
+                <button type="button" (click)="nuevaCuentaGDBD(i)" class="btn btn-secondary mr-1">Agregar Cuenta Google
+                    Drive</button>
+                <button type="button" (click)="nuevaCuentaGM(i)" class="btn btn-secondary mr-1">Agregar Cuenta
+                    Gmail</button>
+                <button type="button" (click)="eliminarConfig(i)" class="btn btn-danger">Eliminar
+                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                        <path fill-rule="evenodd"
+                            d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                    </svg>
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<div *ngIf="cargando" class="alert alert-secondary text-center mt-3">
+    <h4 class="alert-heading">Cargando</h4>
+    <span class="spinner-border spinner-border-sm m-2" role="status" aria-hidden="true" style="zoom: 250%;"></span>
+    <p class="mb-0">Espere por favor</p>
+</div>
+<div *ngIf="nofound" class="alert alert-danger text-center mt-3">
+    <h4 class="alert-heading">No hay registros</h4>
+    <svg width="1em" height="1em" viewBox="0 0 16 16" style="zoom: 300%;" class="bi bi-exclamation m-2"
+        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path
+            d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z" />
+    </svg>
+</div>

@@ -1,0 +1,119 @@
+<br>
+<h2 class="text-center">USUARIOS</h2>
+<hr>
+<div class="text-center">
+    <button *ngIf="nuevo" type="button" (click)="nuevoUsuario()" class="btn btn-danger">Nuevo usuario</button>
+    <button *ngIf="guardar" type="button" (click)="guardarUsuario()" class="btn btn-danger">Guardar usuario</button>
+    <button *ngIf="update" type="button" (click)="actualizarUsuario()" class="btn btn-danger">Actualizar
+        usuario</button>
+    <button *ngIf="inicio" type="button" (click)="inicioUsuario()" class="btn btn-secondary">
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-left" fill="currentColor"
+            xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
+                d="M5.854 4.646a.5.5 0 0 1 0 .708L3.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0z" />
+            <path fill-rule="evenodd" d="M2.5 8a.5.5 0 0 1 .5-.5h10.5a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+        </svg>Regresar
+    </button>
+
+</div>
+<div *ngIf="formuser" class="card text-white bg-dark mb-3">
+    <div class="card-body">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text bg-dark text-white">Usuario:</span>
+            </div>
+            <input type="text" [(ngModel)]="usuario" class="form-control">
+        </div>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text bg-dark text-white">Contraseña:</span>
+            </div>
+            <input type="password" [(ngModel)]="password" class="form-control">
+        </div>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text bg-dark text-white">Tipo:</span>
+            </div>
+            <select [(ngModel)]="tipo" class="form-control" id="tipoFormControlSelect1">
+                <option value="USER">USUARIO</option>
+                <option value="ADMIN">ADMINISTRADOR</option>
+            </select>
+        </div>
+    </div>
+</div>
+<br>
+<div class="card text-white bg-dark mb-3">
+    <div class="card-body">
+        <div class="input-group">
+            <input class="form-control" [(ngModel)]="search" type="search" placeholder="Buscar"
+                aria-label="Search">
+            <button class="btn btn btn-secondary" (click)="buscar()" type="submit"><svg width="1em"
+                    height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z" />
+                    <path fill-rule="evenodd"
+                        d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z" />
+                </svg></button>
+            <button type="button" (click)="inicioUsuarioRegresar()" class="btn btn-danger">
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-left" fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M5.854 4.646a.5.5 0 0 1 0 .708L3.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0z" />
+                    <path fill-rule="evenodd" d="M2.5 8a.5.5 0 0 1 .5-.5h10.5a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+                </svg>
+            </button>
+        </div>
+    </div>
+</div>
+<table class="table text-white">
+    <thead>
+        <tr class="bg-dark">
+            <th scope="col">USUARIO</th>
+            <th scope="col">CONTRASEÑA</th>
+            <th scope="col">TIPO</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of usuarios.data; let i=index" class="bg-dark">
+            <td>{{ user.USUARIO }}</td>
+            <td class="hidetext">{{ user.PASSWORD }}</td>
+            <td *ngIf="user.TIPO == 'USER'">USUARIO</td>
+            <td *ngIf="user.TIPO == 'ADMIN'">ADMINISTRADOR</td>
+            <td class="text-center">
+                <button type="button" (click)="editarUsuario(i)" class="btn btn-secondary mr-1">Editar
+                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                        <path fill-rule="evenodd"
+                            d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                    </svg>
+                </button>
+                <button type="button" (click)="eliminarUsuario(i)" class="btn btn-danger">Eliminar
+                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                        <path fill-rule="evenodd"
+                            d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                    </svg>
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<div *ngIf="cargando" class="alert alert-secondary text-center mt-3">
+    <h4 class="alert-heading">Cargando</h4>
+    <span class="spinner-border spinner-border-sm m-2" role="status" aria-hidden="true" style="zoom: 250%;"></span>
+    <p class="mb-0">Espere por favor</p>
+</div>
+<div *ngIf="nofound" class="alert alert-danger text-center mt-3">
+    <h4 class="alert-heading">No hay registros</h4>
+    <svg width="1em" height="1em" viewBox="0 0 16 16" style="zoom: 300%;" class="bi bi-exclamation m-2"
+        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path
+            d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z" />
+    </svg>
+</div>
